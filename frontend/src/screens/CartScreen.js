@@ -1,11 +1,11 @@
 import "./CartScreen.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // Components
 import CartItem from "../components/CartItem";
-
+import StripeContainer from "../checkout/StripeContainer";
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
@@ -39,7 +39,7 @@ const CartScreen = () => {
     <>
       <div className="cartscreen">
         <div className="cartscreen__left">
-          <h2>Shopping Cart</h2>
+          <h2 className="shop-text">Shopping Cart</h2>
 
           {cartItems.length === 0 ? (
             <div>
@@ -63,7 +63,9 @@ const CartScreen = () => {
             <p>${getCartSubTotal()}</p>
           </div>
           <div>
-            <button>Proceed To Checkout</button>
+            <Link to="/payment">
+              <button>Proceed To Checkout</button>
+            </Link>
           </div>
         </div>
       </div>

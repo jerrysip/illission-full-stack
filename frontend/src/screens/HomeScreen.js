@@ -3,8 +3,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import green from "../images/green.jpg";
 // Components
+import Footer from "../components/Footer";
 import Product from "../components/Product";
-
+import { Carousel } from "react-bootstrap";
+import carousel1 from "../images/white.JPEG";
+import carousel2 from "../images/triple.jpg";
+import carousel3 from "../images/jarturf.jpg";
 //Actions
 import { getProducts as listProducts } from "../redux/actions/productActions";
 
@@ -20,14 +24,19 @@ const HomeScreen = () => {
 
   return (
     <div className="homescreen">
-      <div classname="homescreen-hero">
-        <img src={green} height="500px" alt="green-hero"></img>
+      <div className="homescreen-hero">
+        {/* <img
+          className="hero-image"
+          src={green}
+          height="500px"
+          alt="green-hero"
+        ></img> */}
       </div>
       <div className="first-quote">
         -"Take your candle and light the world, a scent for everyday of the
         week"
       </div>
-      <h2 className="homescreen__title">Latest Products</h2>
+      <h2 className="homescreen__title">Featured Products</h2>
       <div className="homescreen__products">
         {loading ? (
           <h2>Loading...</h2>
@@ -47,14 +56,23 @@ const HomeScreen = () => {
         )}
       </div>
       <div className="second-quote">
-        <div className="buddha-quote">
-          <p className="bquote">
-            "Just as a candle cannot burn without fire,
-            <br /> men cannot live without travel" -Buddha
-          </p>
-        </div>
-        <div className="leaf"></div>
+        <p className="bquote">
+          "Just as a candle cannot burn without fire,
+          <br /> men cannot live without travel" -Buddha
+        </p>
       </div>
+      <Carousel>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carousel2} alt="First slide" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carousel1} alt="Second slide" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src={carousel3} alt="Third slide" />
+        </Carousel.Item>
+      </Carousel>
+      <Footer />
     </div>
   );
 };

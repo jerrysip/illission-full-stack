@@ -6,13 +6,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SideDrawer from "./components/SideDrawer";
 import Backdrop from "./components/Backdrop";
-
+import StripeContainer from "./checkout/StripeContainer";
 // Screens
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import ShopScreen from "./screens/ShopScreen";
 import FreeShipping from "./components/FreeShipping";
+import OurStory from "./screens/OurStory";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -29,6 +30,8 @@ function App() {
           <Route exact path="/" component={ShopScreen} />
           <Route exact path="/product/:id" component={ProductScreen} />
           <Route exact path="/cart" component={CartScreen} />
+          <Route exact path="/ourstory" component={OurStory} />
+          <Route exact path="/payment" component={StripeContainer} />
         </Switch>
       </main>
     </Router>

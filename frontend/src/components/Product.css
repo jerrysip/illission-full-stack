@@ -24,25 +24,30 @@
 
 .info__price {
   font-weight: bold;
+  text-align: center;
 }
 
 .info__name {
-  font-size: 1rem;
+  font-size: 1.3rem;
   overflow: hidden;
+  font-family: bebas neue;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .info__description {
   font-size: 0.8rem;
+  text-align: center;
 }
 
 .info__button {
   display: block;
   text-decoration: none;
   text-align: center;
-  color: #171717;
+  color: white;
   width: 100%;
   padding: 8px 16px;
-  background-color: #f4f4f4;
+  background-color: black;
   border: 1px solid #171717;
   font-size: 1rem;
 }

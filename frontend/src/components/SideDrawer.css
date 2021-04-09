@@ -21,6 +21,9 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  font-weight: bold;
+  font-family: bebas neue;
+  letter-spacing: 1.5px;
 }
 
 .sidedrawer__links > li {
@@ -57,10 +60,10 @@
   justify-content: center;
   width: 30px;
   height: 30px;
-  background-color: #171717;
+  background-color: #d4d4d4;
   border-radius: 50%;
   margin-left: 8px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   font-size: 1rem;
 }
 

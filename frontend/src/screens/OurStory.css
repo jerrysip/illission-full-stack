@@ -1,0 +1,9 @@
+.ourstoryscreen-hero {
+  height: 60vh;
+  width: 100%;
+
+  background-image: url(../images/process.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

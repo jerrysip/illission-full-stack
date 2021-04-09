@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import Product from "../components/Product";
-
+import Footer from "../components/Footer";
 //Actions
 import { getProducts as listProducts } from "../redux/actions/productActions";
 
@@ -20,6 +20,14 @@ const ShopScreen = () => {
 
   return (
     <div className="shopscreen">
+      <div className="shopscreen-hero">
+        {/* <img
+          className="hero-image"
+          src={green}
+          height="500px"
+          alt="green-hero"
+        ></img> */}
+      </div>
       <h2 className="shopscreen__title">Latest Products</h2>
       <div className="shopscreen__products">
         {loading ? (
@@ -39,6 +47,7 @@ const ShopScreen = () => {
           ))
         )}
       </div>
+      <Footer />
     </div>
   );
 };

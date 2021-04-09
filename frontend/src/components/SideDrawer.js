@@ -20,16 +20,21 @@ const SideDrawer = ({ show, click }) => {
     <div className={sideDrawerClass.join(" ")}>
       <ul className="sidedrawer__links" onClick={click}>
         <li>
+          <Link to="/home">HOME</Link>
+        </li>
+        <li>
+          <Link to="/">SHOP</Link>
+        </li>
+        <li>
+          <Link to="/ourstory">OUR STORY</Link>
+        </li>
+        <li>
           <Link to="/cart">
-            <i className="fas fa-shopping-cart"></i>
             <span>
-              Cart{" "}
+              CART{" "}
               <span className="sidedrawer__cartbadge">{getCartCount()}</span>
             </span>
           </Link>
-        </li>
-        <li>
-          <Link to="/">Shop</Link>
         </li>
       </ul>
     </div>
