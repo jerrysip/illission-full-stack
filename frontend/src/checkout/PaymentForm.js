@@ -1,79 +1,132 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 import "./PaymentForm.css";
+// MUI Components
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import TextField from "@material-ui/core/TextField";
+// stripe
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+// Util imports
+import { makeStyles } from "@material-ui/core/styles";
+// Custom Components
+import CardInput from "./CardInput";
 
-const CARD_OPTIONS = {
-  iconStyle: "solid",
-  style: {
-    base: {
-      iconColor: "#c4f0ff",
-      color: "#fff",
-      fontWeight: 500,
-      fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-      fontSize: "16px",
-      fontSmoothing: "antialiased",
-      ":-webkit-autofill": { color: "#fce883" },
-      "::placeholder": { color: "#87bbfd" },
-    },
-    invalid: {
-      iconColor: "#ffc7ee",
-      color: "#ffc7ee",
-    },
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 500,
+    marginTop: "100px",
+    justifyContent: "center",
   },
-};
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "flex-start",
+  },
+  div: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "flex-start",
+    justifyContent: "space-between",
+  },
+  button: {
+    margin: "2em auto 1em",
+  },
+});
 
 export default function PaymentForm() {
-  const [success, setSuccess] = useState(false);
+  const classes = useStyles();
+  // State
+  const [email, setEmail] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
+  const handleSubmit = async (event) => {
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
+
+    const res = await axios.post("http://localhost:3000/pay", { email: email });
+
+    const clientSecret = res.data["client_secret"];
+
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+        billing_details: {
+          email: email,
+        },
+      },
     });
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:3000/payment", {
-          amount: 1000,
-          id,
-        });
-
-        if (response.data.success) {
-          console.log("Successful payment");
-          setSuccess(true);
-        }
-      } catch (error) {
-        console.log("Error", error);
-      }
+    if (result.error) {
+      // Show error to your customer (e.g., insufficient funds)
+      console.log(result.error.message);
     } else {
-      console.log(error.message);
+      // The payment has been processed!
+      if (result.paymentIntent.status === "succeeded") {
+        console.log("Money is in the bank!");
+        // Show a success message to your customer
+        // There's a risk of the customer closing the window before callback
+        // execution. Set up a webhook or plugin to listen for the
+        // payment_intent.succeeded event that handles any business critical
+        // post-payment actions.
+      }
     }
   };
 
   return (
-    <>
-      {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset className="FormGroup">
-            <div className="FormRow">
-              <CardElement options={CARD_OPTIONS} />
-            </div>
-          </fieldset>
-          <button className="checkout-btn">Pay</button>
-        </form>
-      ) : (
-        <div>
-          <h2>
-            You just bought a sweet spatula congrats this is the best decision
-            of you're life
-          </h2>
-        </div>
-      )}
-    </>
+    <div className="pay-wrap">
+      <Card className={classes.root}>
+        <CardContent className={classes.content}>
+          {/* <TextField
+            label="First Name"
+            id="outlined-first-input"
+            placeholder="First Name"
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            label="Last Name"
+            id="outlined-last-input"
+            placeholder="Last Name"
+            margin="normal"
+            variant="outlined"
+            type="email"
+          /> */}
+          <TextField
+            label="Email"
+            id="outlined-email-input"
+            helperText={`Email you'll receive updates and receipts on`}
+            margin="normal"
+            variant="outlined"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            fullWidth
+          />
+          <CardInput />
+          <div className={classes.div}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                width: "800px",
+              }}
+              className={classes.button}
+              onClick={handleSubmit}
+            >
+              Pay
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

@@ -9,3 +9,9 @@
   line-height: 5vh;
   vertical-align: middle;
 }
+
+@media (max-width: 650px) {
+  .freeshipping {
+    font-size: 12px;
+  }
+}

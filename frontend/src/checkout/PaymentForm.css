@@ -1,5 +1,20 @@
-.checkout-btn {
-  text-decoration: none;
-  background: white;
-  border: 1px solid black;
+.pay-wrap {
+  width: 100%;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  background-image: url("../images/leave.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-left: 30%;
+  padding-right: 25%;
+  padding-top: 2rem;
+}
+
+@media (max-width: 650px) {
+  .pay-wrap {
+    padding: 0;
+    padding-top: 5rem;
+  }
 }

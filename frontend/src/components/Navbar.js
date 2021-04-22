@@ -12,9 +12,7 @@ const Navbar = ({ click }) => {
 
   return (
     <nav className="navbar">
-      <div className="navbar__logo">
-        <h2>THE ILLISSION PROJECT</h2>
-      </div>
+      <div className="navbar__logo">THE ILLISSION PROJECT</div>
 
       <ul className="navbar__links">
         <li>
@@ -28,7 +26,8 @@ const Navbar = ({ click }) => {
         </li>
         <li>
           <Link to="/cart" className="cart__link">
-            <i className="fas fa-shopping-cart"></i>
+            CART
+            {/* <i className="fas fa-shopping-cart"></i> */}
             <span>
               <span className="cartlogo__badge">{getCartCount()}</span>
             </span>

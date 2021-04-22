@@ -1,7 +1,7 @@
 import "./HomeScreen.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import green from "../images/green.jpg";
+
 // Components
 import Footer from "../components/Footer";
 import Product from "../components/Product";
@@ -33,8 +33,8 @@ const HomeScreen = () => {
         ></img> */}
       </div>
       <div className="first-quote">
-        -"Take your candle and light the world, a scent for everyday of the
-        week"
+        -"Take your candle and light the world,
+        <br className="break" /> scent for everyday of the week"
       </div>
       <h2 className="homescreen__title">Featured Products</h2>
       <div className="homescreen__products">
@@ -56,10 +56,8 @@ const HomeScreen = () => {
         )}
       </div>
       <div className="second-quote">
-        <p className="bquote">
-          "Just as a candle cannot burn without fire,
-          <br /> men cannot live without travel" -Buddha
-        </p>
+        "Just as a candle cannot burn without fire, men cannot live without
+        travel" -Buddha
       </div>
       <Carousel>
         <Carousel.Item>

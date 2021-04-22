@@ -1,11 +1,11 @@
 import "./CartScreen.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // Components
 import CartItem from "../components/CartItem";
-import StripeContainer from "../checkout/StripeContainer";
+
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
@@ -63,7 +63,7 @@ const CartScreen = () => {
             <p>${getCartSubTotal()}</p>
           </div>
           <div>
-            <Link to="/payment">
+            <Link to="/pay">
               <button>Proceed To Checkout</button>
             </Link>
           </div>

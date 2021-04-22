@@ -18,17 +18,18 @@ export default class Footer extends Component {
             <b>E-Mail:</b>
             <p>theillissionproject@gmail.com</p>
           </div>
-          <div className="footer-newsletter">
-            <b className="footer-news">Join Our Newsletter</b>
-            <br />
-            <input
-              className="footer-placeholder"
-              placeholder="name@email.com"
-            ></input>
-            <br />
-            <button className="footer-signup">Sign Up</button>
-          </div>
-
+          <form action="/newsletter" method="POST">
+            <div className="footer-newsletter">
+              <b className="footer-news">Join Our Newsletter</b>
+              <br />
+              <input
+                className="footer-placeholder"
+                placeholder="name@email.com"
+              ></input>
+              <br />
+              <button className="footer-signup">Sign Up</button>
+            </div>
+          </form>
           <div className="footer-links">
             <b>Shop</b>
             <br />

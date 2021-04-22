@@ -1,7 +1,7 @@
 .ourstoryscreen-hero {
   height: 60vh;
   width: 100%;
-
+  margin-top: 0.5rem;
   background-image: url(../images/process.jpg);
   background-position: center;
   background-size: cover;
