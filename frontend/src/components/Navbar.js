@@ -19,7 +19,7 @@ const Navbar = ({ click }) => {
           <Link to="/home">HOME</Link>
         </li>
         <li>
-          <Link to="/">SHOP</Link>
+          <Link to="/shop">SHOP</Link>
         </li>
         <li>
           <Link to="/ourstory">OUR STORY</Link>

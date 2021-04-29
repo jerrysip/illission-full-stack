@@ -6,8 +6,7 @@ import Navbar from "./components/Navbar";
 import SideDrawer from "./components/SideDrawer";
 import Backdrop from "./components/Backdrop";
 import Social from "./components/Social";
-import Pay from "./checkout/Pay";
-// import AuthForm from "./components/auth/AuthForm";
+
 // Screens
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -16,50 +15,13 @@ import ShopScreen from "./screens/ShopScreen";
 import FreeShipping from "./components/FreeShipping";
 import OurStory from "./screens/OurStory";
 import SignIn from "./screens/Signin";
-// import { AuthContext } from "./components/auth/auth";
-
+import Product from "./components/Product";
+import Success from "./components/Success";
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
 
-  // const existingToken = localStorage.getItem("token") || "";
-  // const existingUsername = localStorage.getItem("username") || "";
-  // const [authToken, setAuthToken] = useState(existingToken);
-  // const [username, setUsername] = useState(existingUsername);
-
-  // const setUserName = (data) => {
-  //   if (!data) {
-  //     localStorage.removeItem("username");
-  //     setUsername();
-  //   } else {
-  //     localStorage.setItem("username", data);
-  //     setUsername(data);
-  //   }
-  // };
-
-  // const setToken = (data) => {
-  //   if (!data) {
-  //     localStorage.removeItem("token");
-  //     setAuthToken();
-  //   } else {
-  //     localStorage.setItem("token", JSON.stringify(authToken));
-  //     setAuthToken(data);
-  //   }
-  // };
   return (
     <Router>
-      {/* <AuthContext.Provider
-        value={{
-          authToken,
-          setAuthToken: setToken,
-          username,
-          setUserName: setUserName,
-        }}
-      >
-        <div className="app">
-          <AuthForm />
-        </div>
-      </AuthContext.Provider> */}
-
       <Social />
       <FreeShipping />
       <Navbar click={() => setSideToggle(true)} />
@@ -68,13 +30,14 @@ function App() {
       <main className="app">
         <Switch>
           <Route exact path="/home" component={HomeScreen} />
-          <Route exact path="/" component={ShopScreen} />
+          <Route exact path="/shop" component={ShopScreen} />
           <Route exact path="/product/:id" component={ProductScreen} />
           <Route exact path="/cart" component={CartScreen} />
           <Route exact path="/ourstory" component={OurStory} />
-          <Route exact path="/pay" component={Pay} />
+          <Route exact path="/products" component={Product} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={SignIn} />
+          <Route exact path="/success" component={Success} />
         </Switch>
       </main>
     </Router>
