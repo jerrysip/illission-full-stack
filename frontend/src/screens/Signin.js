@@ -29,17 +29,19 @@ export default function Signin() {
     }
   };
   return (
-    <AuthContext.Provider
-      value={{
-        authToken,
-        setAuthToken: setToken,
-        username,
-        setUserName: setUserName,
-      }}
-    >
-      <div className="signin">
-        <AuthForm />
-      </div>
-    </AuthContext.Provider>
+    <>
+      <AuthContext.Provider
+        value={{
+          authToken,
+          setAuthToken: setToken,
+          username,
+          setUserName: setUserName,
+        }}
+      >
+        <div className="signin">
+          <AuthForm />
+        </div>
+      </AuthContext.Provider>
+    </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid, Card, Typography, Button, TextField } from "@material-ui/core";
 import { useAuth } from "./auth";
 import { Link, withRouter } from "react-router-dom";
-
+import "./AuthForm.css";
 const AuthForm = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -62,6 +62,7 @@ const AuthForm = (props) => {
       type="password"
       onChange={(e) => setPassword(e.target.value)}
     />,
+
     <Button
       variant="contained"
       className=" text-white mt-5 mb-2"
@@ -118,6 +119,30 @@ const AuthForm = (props) => {
             </Grid>
           );
         })}
+        <form
+          className="facebook"
+          method="get"
+          action="http://localhost:5000/facebook"
+        >
+          <button className="fb" type="submit">
+            <i class="fab fa-facebook"></i>
+            LOGIN WITH FACEBOOK
+          </button>
+        </form>
+        <form
+          className="google"
+          method="get"
+          action="http://localhost:5000/google/"
+        >
+          <button className="g" type="submit">
+            <i
+              class="fab fa-google-plus-g"
+              // style={{ color: "red", fontSize: 18 }}
+            ></i>
+            LOGIN WITH GOOGLE
+          </button>
+        </form>
+
         {action === "Sign In" ? (
           <Link to="/signup">Don't have an account? Sign Up</Link>
         ) : (
