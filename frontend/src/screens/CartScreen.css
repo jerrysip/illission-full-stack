@@ -21,6 +21,7 @@
 .shop-text {
   border-bottom: 1px solid black;
   padding-bottom: 3px;
+  font-family: bebas neue;
 }
 
 .cartscreen__right {
@@ -81,4 +82,8 @@
   .cartscreen__right {
     margin: 1rem;
   }
+}
+
+.payment {
+  font-family: bebas neue;
 }
